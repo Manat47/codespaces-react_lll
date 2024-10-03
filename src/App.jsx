@@ -1,29 +1,27 @@
 import './App.css';
+import { BrowserRouter,Routes,Route,Link } from 'react-router-dom';
+import About from './About';
+import Home from './Home';
+import Post from './Post';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src="Octocat.png" className="App-logo" alt="logo" />
-        <p>
-          GitHub Codespaces <span className="heart">♥️</span> React
-        </p>
-        <p className="small">
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
+  return (<BrowserRouter>
+    <div>
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/about">About</Link></li>
+        <li><Link to="/post?fname=manut&lname=suii">Post plot</Link></li>
+        <li><Link to="/post/1">Post ID </Link></li>
+        <li><Link to="post/suiii">Post string </Link></li>
+      </ul>
     </div>
-  );
+    <Routes>
+      <Route path="/" element={<Home/>}/>
+      <Route path="/about" element={<About/>}/>
+      <Route path= "/post" element={<Post/>}/>
+      <Route path= "/post/:id" element={<Post/>}/>
+    </Routes>
+  </BrowserRouter>);
 }
 
 export default App;
